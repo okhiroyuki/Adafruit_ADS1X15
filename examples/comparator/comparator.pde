@@ -1,4 +1,4 @@
-#include <Wire.h>
+#include <I2C.h>
 #include <Adafruit_ADS1015.h>
 
 Adafruit_ADS1015 ads1015;
