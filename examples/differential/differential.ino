@@ -1,7 +1,8 @@
 #include <I2C.h>
-#include <Adafruit_ADS1015.h>
+#include <Adafruit_ADS1015_I2C.h>
 
 Adafruit_ADS1015 ads1015;
+//Adafruit_ADS1115 ads1015;
 
 void setup(void) 
 {
