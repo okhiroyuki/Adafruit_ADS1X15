@@ -114,7 +114,7 @@ uint16_t Adafruit_ADS1015::readADC_SingleEnded(uint8_t channel) {
   {
     return 0;
   }
-  /*
+  
   // Start with default values
   uint16_t config = ADS1015_REG_CONFIG_CQUE_NONE    | // Disable the comparator (default val)
                     ADS1015_REG_CONFIG_CLAT_NONLAT  | // Non-latching (default val)
@@ -122,14 +122,7 @@ uint16_t Adafruit_ADS1015::readADC_SingleEnded(uint8_t channel) {
                     ADS1015_REG_CONFIG_CMODE_TRAD   | // Traditional comparator (default val)
                     ADS1015_REG_CONFIG_DR_3300SPS   | // 1600 samples per second (default)
                     ADS1015_REG_CONFIG_MODE_SINGLE;   // Single-shot mode (default)
-*/
-  // Start with default values
-  uint16_t config = ADS1015_REG_CONFIG_CQUE_NONE    | // Disable the comparator (default val)
-                    ADS1015_REG_CONFIG_CLAT_NONLAT  | // Non-latching (default val)
-                    ADS1015_REG_CONFIG_CPOL_ACTVLOW | // Alert/Rdy active low   (default val)
-                    ADS1015_REG_CONFIG_CMODE_TRAD   | // Traditional comparator (default val)
-                    ADS1015_REG_CONFIG_DR_3300SPS   | // 3300 samples per second (default)
-                    ADS1015_REG_CONFIG_MODE_CONTIN;   // Single-shot mode (default)
+
   //Set Conversion mode
   config |= m_gain;
 
@@ -190,7 +183,7 @@ int16_t Adafruit_ADS1015::readADC_Differential_0_1() {
 
   // Write config register to the ADC
   writeRegister(m_i2cAddress, ADS1015_REG_POINTER_CONFIG, config);
-  
+  /*
   // Wait for the conversion to complete
   delay(m_conversionDelay);
   
@@ -211,7 +204,7 @@ int16_t Adafruit_ADS1015::readADC_Differential_0_1() {
     }
     return (int16_t)res;
   }
-      
+  */  
 }
 
 /**************************************************************************/
@@ -242,7 +235,7 @@ int16_t Adafruit_ADS1015::readADC_Differential_2_3() {
 
   // Write config register to the ADC
   writeRegister(m_i2cAddress, ADS1015_REG_POINTER_CONFIG, config);
-  
+  /*
   // Wait for the conversion to complete
   delay(m_conversionDelay);
 
@@ -263,6 +256,7 @@ int16_t Adafruit_ADS1015::readADC_Differential_2_3() {
     }
     return (int16_t)res;
   }
+  */
 }
 
 /**************************************************************************/
@@ -282,7 +276,6 @@ void Adafruit_ADS1015::startComparator_SingleEnded(uint8_t channel, int16_t thre
                     ADS1015_REG_CONFIG_CPOL_ACTVLOW | // Alert/Rdy active low   (default val)
                     ADS1015_REG_CONFIG_CMODE_TRAD   | // Traditional comparator (default val)
                     ADS1015_REG_CONFIG_DR_3300SPS   | // 3300 samples per second (default)
-                    ADS1015_REG_CONFIG_MODE_CONTIN  | // Continuous conversion mode
                     ADS1015_REG_CONFIG_MODE_CONTIN;   // Continuous conversion mode
 
   //Set DataRate
@@ -323,7 +316,7 @@ void Adafruit_ADS1015::startComparator_SingleEnded(uint8_t channel, int16_t thre
 int16_t Adafruit_ADS1015::getLastConversionResults()
 {
   // Wait for the conversion to complete
-  delay(m_conversionDelay);
+  //delay(m_conversionDelay);
 
   // Read the conversion results
   uint16_t res = readRegister(m_i2cAddress, ADS1015_REG_POINTER_CONVERT) >> m_bitShift;

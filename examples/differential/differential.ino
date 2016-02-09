@@ -18,7 +18,9 @@ void loop(void)
 {
   int16_t results;
 
-  results = ads1015.readADC_Differential_0_1();  
+  ads1015.readADC_Differential_0_1();  
+  delay(1);
+  results = ads1015.getLastConversionResults();
   Serial.print("Differential: "); Serial.print(results); Serial.print("("); Serial.print(results * 3); Serial.println("mV)");
 
   delay(1000);
